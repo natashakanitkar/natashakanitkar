@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+
+
+:root {
+    --base-color: rgb(255, 255, 255);
+    --text-color: black;
+    --primary-color: rgb(69, 46, 22);
+    --secondary-color: rgb(234, 232, 231);
+    --color-one: rgb(245, 242, 241);
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Merriweather, sans-serif;
+    color: var(--text-color);
+}
+
+/* Location header alignment with h1 */
+.Location,
+h3.Location {
+    margin: 0;
+    font-size: 1.3rem;
+    text-align: left;
+    padding: 0;
+    max-width: none;
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-color);
+    line-height: 2;
+}
+
+nav {
+    margin: 1em auto 3em auto;
+    width: min(1000px, 100%);
+}
+
+header,
+section {
+    line-height: 1.5;
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-one);
+    padding: min(2em, 15%);
+    border-radius: 1em;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+header img {
+    max-width: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+    object-position: bottom;
+    background-color: var(--primary-color);
+}
+.text-container p.small-text {
+    font-size: 0.9rem;  
+}
+.text-container {
+    flex: 0 1 34em;
+
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 90px;
+    text-align: center;
+    font-size: 1.3rem;
+
+}
+
+h3 {
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+ul {
+    max-width:1050px;
+    margin: 30px auto;
+    padding: 0 90px;
+    line-height: 3;
+    text-align: center;
+}
+.text-container p {
+    margin: .75em 0 1em 0;
+    font-size: 1.25rem;
+}
+
+.button-container {
+    display: flex;
+    gap: 1em;
+    margin-top: 1.5em;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background-color: var(--primary-color);
+    padding: .65em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+.hyperlink {
+    color: var(--text-color);
+}
+
+h3.transactions {
+     max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+section.IB-Blurb {
+    text-align: center;
+}
+
+section.VC-Blurb {
+    text-align: center;
+}
+
+.t-row,.vc,.fun1,.fun2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    padding: min(2em, 15%);
+    text-align: center;
+}
+.logos {
+    display: flex;
+    justify-content: center; /* center the group of logos */
+    gap: 2rem;              /* even spacing between logos */
+    align-items: center;
+    margin: 1.25rem auto;   /* center the container horizontally */
+    max-width: 700px;
+    padding: 0 1rem;       /* small horizontal padding for narrow viewports */
+}
+.logos img {
+    display: block;
+    max-width: 160px; /* consistent logo sizing */
+    width: 100%;
+    height: auto;
+}
+/* Reduce size specifically for MD logo if present */
+.logos img[src$="MD.jpg"], .logos img[alt*="MD"] {
+    max-width: 90px;
+}
+.t-row figure,.vc figure, .fun1 figure, .fun2 figure {
+    flex: 1;
+    min-width: 150px;
+}
+.t-row figure figcaption a{
+    color: inherit;
+    text-decoration: none;
+    font-weight: normal;
+}
+.t-row figure figcaption a:hover {
+    text-decoration: underline;
+    color: inherit;
+}
+.t-row figure img {
+    width: 80%;
+    height: auto;}
+footer {
+    padding-bottom: 1.5em;
+    text-align: center;
+}
+
+footer a {
+    margin: 0 1em;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 950px) {
+    header {
+        text-align: center;
+    }
+
+    header .text-container {
+        padding-top: 0;
+    }
+}
+
+@media(max-width: 640px) {
+
+    .cta-button {
+        margin-top: .5em;
+        width: 100%;
+    }
+.t-row figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.t-row figure img, .vc figure img, .fun1 figure img, .fun2 figure img {
+  width: 100%;
+  max-width: 200px;   /* tweak to taste */
+  height: 200px;      /* fixed visual height so all images match */
+  object-fit: contain; /* or 'cover' if you want them cropped */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+.vc, .fun1, .fun2 {
+    font-size: 0.8rem;
+}
+.t-row{
+    flex-direction: column;
+    align-items: center;
+}
+    .text-container p {
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
