@@ -68,6 +68,8 @@ header img {
     object-position: bottom;
     background-color: var(--primary-color);
 }
+/* Make all images responsive by default */
+img { max-width: 100%; height: auto; display: block; }
 .text-container p.small-text {
     font-size: 0.9rem;  
 }
@@ -180,19 +182,64 @@ section.VC-Blurb {
 .t-row figure,.vc figure, .fun1 figure, .fun2 figure {
     flex: 1;
     min-width: 150px;
+    /* stack image above caption and center them */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ensure figures clip their children so rounded corners apply at any size */
+.t-row figure,
+.vc figure,
+.fun1 figure,
+.fun2 figure,
+.logos figure,
+header img,
+.img-button {
+    border-radius: 12px;
+    overflow: hidden; /* clip image corners even when image fills the box */
 }
 .t-row figure figcaption a{
     color: inherit;
     text-decoration: none;
     font-weight: normal;
 }
+
+/* ensure figcaptions sit under their images and don't span full width */
+.vc figure figcaption,
+.fun1 figure figcaption,
+.fun2 figure figcaption,
+.t-row figure figcaption {
+    max-width: 360px; /* limit caption width to match image sizes */
+    margin-top: 0.6rem;
+    color: var(--text-color);
+}
 .t-row figure figcaption a:hover {
     text-decoration: underline;
     color: inherit;
 }
 .t-row figure img {
-    width: 80%;
-    height: auto;}
+    width: 100%;
+    max-width: 360px; /* increased size for transaction images on desktop */
+    height: auto;
+    margin: 0 auto;
+}
+/* Standardize Venture/Growth images: fixed height, proportional width */
+.vc figure img {
+    width: clamp(100px, 15vw, 180px); /* scaled down to prevent overlap on smaller screens */
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* crop a little from bottom for the middle image */
+.vc figure img.vc-crop-bottom {
+    object-position: top center; /* keep top, crop bottom */
+}
 footer {
     padding-bottom: 1.5em;
     text-align: center;
@@ -230,14 +277,36 @@ footer a:hover {
   align-items: center;
   gap: 0.75rem;
 }
-.t-row figure img, .vc figure img, .fun1 figure img, .fun2 figure img {
-  width: 100%;
-  max-width: 200px;   /* tweak to taste */
-  height: 200px;      /* fixed visual height so all images match */
-  object-fit: contain; /* or 'cover' if you want them cropped */
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
+.t-row figure img {
+    width: 100%;
+    max-width: 420px;     /* increased mobile size for transaction images */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+/* Rounded corners for images in "A few other things that make me, ME" */
+.fun1 figure img,
+.fun2 figure img,
+.fun1 img,
+.fun2 img {
+    border-radius: 8px;
+}
+.vc figure img, .fun1 figure img, .fun2 figure img {
+    width: 100%;
+    max-width: 160px;
+    /* use cover on mobile to maintain uniform boxes */
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+.logos img {
+    max-width: 120px;   /* scale logos down on mobile */
+    width: 100%;
+    height: auto;
 }
 .vc, .fun1, .fun2 {
     font-size: 0.8rem;
@@ -246,10 +315,23 @@ footer a:hover {
     flex-direction: column;
     align-items: center;
 }
+/* Make venture and hobby sections behave like t-row on narrow screens */
+.vc, .fun1, .fun2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.vc figure, .fun1 figure, .fun2 figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
     .text-container p {
         font-size: 1rem;
     }
     h2 {
         font-size: 1.5rem;
+        text-align: center;
     }
 }
