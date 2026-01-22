@@ -22,6 +22,33 @@ html {
     color: var(--text-color);
 }
 
+nav {
+    width: min(75em, 100%);
+    margin: 0 auto;
+    /* keep left inset to match section padding, remove right inset so links sit flush to inner edge */
+    padding: 0.5rem 0 0.5rem min(2em, 15%);
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* push nav items to the right of the nav container */
+    list-style-type: none;
+    gap: 2em;
+    margin: 0;
+    font-family: Merriweather, sans-serif;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
 /* Location header alignment with h1 */
 .Location,
 h3.Location {
@@ -36,11 +63,6 @@ body {
     padding: 1em;
     background-color: var(--base-color);
     line-height: 2;
-}
-
-nav {
-    margin: 1em auto 3em auto;
-    width: min(1000px, 100%);
 }
 
 header,
@@ -334,4 +356,18 @@ footer a:hover {
         font-size: 1.5rem;
         text-align: center;
     }
+}
+
+/* Nav: remove beige header background, align nav to page width and push links to the right */
+header {
+    /* keep page spacing but remove the pale background around the nav */
+    background-color: transparent;
+    padding: 0; /* nav will supply its own vertical spacing */
+    border-radius: 0;
+}
+
+/* Make sure nav links don't inherit a background and remain visually neutral */
+nav a {
+    background: transparent;
+    padding: 0.15rem 0.25rem;
 }
